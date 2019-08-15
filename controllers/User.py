@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse, marshal_with
 from flask import request
-from Interfaces import AuthInterface
+from Interfaces import User
 
 parser = reqparse.RequestParser()
 
@@ -9,7 +9,7 @@ class Auth(Resource):
     def get(self):
         return {'status': False}
 
-    @marshal_with(AuthInterface)
+    @marshal_with(User.AuthInterface)
     def post(self):
         json_data = request.get_json(force=True)
         username = json_data['username']
