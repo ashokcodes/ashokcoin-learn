@@ -1,5 +1,17 @@
-from flask_restful import Resource
+from flask_restful import Resource, reqparse, marshal_with
+from flask import request
+from Interfaces import AuthInterface
+
+parser = reqparse.RequestParser()
+
 
 class Auth(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return {'status': False}
+
+    @marshal_with(AuthInterface)
+    def post(self):
+        json_data = request.get_json(force=True)
+        username = json_data['username']
+        password = json_data['password']
+        return {'username': username, 'password': password}
