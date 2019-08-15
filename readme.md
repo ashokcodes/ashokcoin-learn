@@ -8,6 +8,6 @@
 
 ## Setup
 
-```pip install flask```
-```pip install flask_restful```
+```pip install flask```  
+```pip install flask_restful```  
 ```flask run```
